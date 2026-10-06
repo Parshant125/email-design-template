@@ -87,13 +87,15 @@ export const AbuDhabiEmail = () => {
           <Section style={heroWrap} {...{ background: images.hero, bgcolor: navy }}>
             <Row>
               <Column style={adtLogoCell}>
-                <Img
-                  src={images.adtLogo}
-                  alt="Experience Abu Dhabi"
-                  width="178"
-                  height="46"
-                  style={adtLogo}
-                />
+                <Link href={links.packages} style={heroLink}>
+                  <Img
+                    src={images.adtLogo}
+                    alt="Experience Abu Dhabi"
+                    width="178"
+                    height="46"
+                    style={adtLogo}
+                  />
+                </Link>
               </Column>
               <Column align="right" style={htLogoCell}>
                 <Link href={links.logo} style={htLogo}>
@@ -108,31 +110,39 @@ export const AbuDhabiEmail = () => {
               </Column>
             </Row>
             <Row>
-              <Column style={heroSpacer}>&nbsp;</Column>
-            </Row>
-            {heroFadeSteps.map((alpha) => (
-              <Row key={alpha}>
-                <Column style={{ ...heroFadeStep, backgroundColor: `rgba(9, 48, 81, ${alpha})` }}>&nbsp;</Column>
-              </Row>
-            ))}
-            <Row>
-              <Column style={discoverBlock} {...{ bgcolor: navy }}>
-                <Text style={tagline} className="ht-white-text">
-                  Go from grand mosques to island escapes,
-                  <br />
-                  desert drives to non-stop thrills, all in one holiday.
-                </Text>
-                <Section style={taglineRule} className="ht-tagline-rule">
-                  <Row>
-                    <Column style={ruleCell}>&nbsp;</Column>
-                  </Row>
-                </Section>
-                <Text style={discoverKicker} className="ht-white-text">
-                  A CITY WITH MANY SIDES
-                </Text>
-                <Heading style={discoverTitle} className="ht-white-text">
-                  TO DISCOVER
-                </Heading>
+              <Column>
+                <Link href={links.packages} style={heroLink}>
+                  <Section>
+                    <Row>
+                      <Column style={heroSpacer}>&nbsp;</Column>
+                    </Row>
+                    {heroFadeSteps.map((alpha) => (
+                      <Row key={alpha}>
+                        <Column style={{ ...heroFadeStep, backgroundColor: `rgba(9, 48, 81, ${alpha})` }}>&nbsp;</Column>
+                      </Row>
+                    ))}
+                    <Row>
+                      <Column style={discoverBlock} {...{ bgcolor: navy }}>
+                        <Text style={tagline} className="ht-white-text">
+                          Go from grand mosques to island escapes,
+                          <br />
+                          desert drives to non-stop thrills, all in one holiday.
+                        </Text>
+                        <Section style={taglineRule} className="ht-tagline-rule">
+                          <Row>
+                            <Column style={ruleCell}>&nbsp;</Column>
+                          </Row>
+                        </Section>
+                        <Text style={discoverKicker} className="ht-white-text">
+                          A CITY WITH MANY SIDES
+                        </Text>
+                        <Heading style={discoverTitle} className="ht-white-text">
+                          TO DISCOVER
+                        </Heading>
+                      </Column>
+                    </Row>
+                  </Section>
+                </Link>
               </Column>
             </Row>
           </Section>
@@ -209,7 +219,7 @@ export const AbuDhabiEmail = () => {
             </Row>
             <Section style={buttonWrap}>
               <Button href={links.packages} style={exploreButton} className="ht-light-surface">
-                <span style={underlineText} className="ht-navy-text">
+                <span style={ctaText} className="ht-navy-text">
                   Explore Packages
                 </span>
               </Button>
@@ -398,6 +408,11 @@ const htLogoImage = {
 
 // Fills the hero to its original 954px height (600px × 159%).
 // Logo row (72px) + spacer (448px) puts the fade start at 520px, as in the original design.
+const heroLink = {
+  display: 'block',
+  textDecoration: 'none',
+};
+
 const heroSpacer = {
   height: '448px',
   lineHeight: '448px',
@@ -565,11 +580,11 @@ const exploreButton = {
   lineHeight: '100%',
   fontWeight: 500,
   textAlign: 'center' as const,
-  textDecoration: 'underline',
+  textDecoration: 'none',
 };
 
-const underlineText = {
-  textDecoration: 'underline',
+const ctaText = {
+  textDecoration: 'none',
 };
 
 const experienceSection = {
@@ -688,7 +703,7 @@ const advisorButton = {
   display: 'block',
   height: '53px',
   fontFamily: 'Inter, Helvetica, Arial, sans-serif',
-  fontSize: '18px',
+  fontSize: '16px',
   lineHeight: '53px',
   whiteSpace: 'nowrap' as const,
   borderRadius: '8px',
@@ -699,7 +714,7 @@ const advisorButton = {
 
 const advisorIcon = {
   display: 'inline-block',
-  marginRight: '10px',
+  marginRight: '8px',
 };
 
 const chatIcon = {
@@ -719,9 +734,9 @@ const phoneIcon = {
 const advisorText = {
   color: '#0B2234',
   fontFamily: 'Inter, Helvetica, Arial, sans-serif',
-  fontSize: '18px',
+  fontSize: '16px',
   fontWeight: 500,
-  textDecoration: 'underline',
+  textDecoration: 'none',
   verticalAlign: 'baseline',
 };
 
