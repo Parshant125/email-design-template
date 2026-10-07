@@ -20,6 +20,10 @@ const links = {
   logo: 'https://holidaytribe.ai/?utm_source=logo&utm_medium=email&utm_campaign=abudhabi',
   packages:
     'https://holidaytribe.ai/international-holidays/abu-dhabi-tour-packages?utm_source=cta&utm_medium=email&utm_campaign=abudhabi',
+  mosque:
+    'https://holidaytribe.ai/international-holidays/abu-dhabi-tour-packages?utm_source=mosque&utm_medium=email&utm_campaign=abudhabi',
+  offerBanner:
+    'https://holidaytribe.ai/international-holidays/abu-dhabi-tour-packages/?utm_source=offerbanner&utm_medium=email&utm_campaign=abudhabi',
   chat: 'https://api.whatsapp.com/send/?phone=%2B919319998495&text&type=phone_number&app_absent=0&utm_campaign=summer_campaign&utm_source=email',
   talk: 'tel:+919821332300',
   romanceVideo: 'https://cdn.holidaytribe.ai/email-template/videos/abu-dhabi-theme.gif',
@@ -86,8 +90,7 @@ export const AbuDhabiEmail = () => {
         <Container style={container} className="ht-navy-bg">
           <Section style={heroWrap} {...{ background: images.hero, bgcolor: navy }}>
             <Row>
-              <Column style={adtLogoCell}>
-                <Link href={links.packages} style={heroLink}>
+              <Column style={adtLogoCell}>               
                   <Img
                     src={images.adtLogo}
                     alt="Experience Abu Dhabi"
@@ -95,7 +98,6 @@ export const AbuDhabiEmail = () => {
                     height="46"
                     style={adtLogo}
                   />
-                </Link>
               </Column>
               <Column align="right" style={htLogoCell}>
                 <Link href={links.logo} style={htLogo}>
@@ -111,7 +113,7 @@ export const AbuDhabiEmail = () => {
             </Row>
             <Row>
               <Column>
-                <Link href={links.packages} style={heroLink}>
+                <Link href={links.mosque} style={heroLink}>
                   <Section>
                     <Row>
                       <Column style={heroSpacer}>&nbsp;</Column>
@@ -260,13 +262,15 @@ export const AbuDhabiEmail = () => {
               <br />
               ONE MORE REASON TO GO.
             </Text>
-            <Img
-              src={images.banner}
-              alt="India, your Abu Dhabi holiday starts visa-free. Stay 3 nights or more in Abu Dhabi and get visa-free. Valid till 31st Oct '26. T&C apply."
-              width="497"
-              height="136"
-              style={bannerImage}
-            />
+            <Link href={links.offerBanner}>
+              <Img
+                src={images.banner}
+                alt="India, your Abu Dhabi holiday starts visa-free. Stay 3 nights or more in Abu Dhabi and get visa-free. Valid till 31st Oct '26. T&C apply."
+                width="497"
+                height="136"
+                style={bannerImage}
+              />
+            </Link>
           </Section>
 
           <Section style={footerSection}>
