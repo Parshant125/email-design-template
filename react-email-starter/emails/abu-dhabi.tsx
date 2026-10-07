@@ -90,14 +90,14 @@ export const AbuDhabiEmail = () => {
         <Container style={container} className="ht-navy-bg">
           <Section style={heroWrap} {...{ background: images.hero, bgcolor: navy }}>
             <Row>
-              <Column style={adtLogoCell}>               
-                  <Img
-                    src={images.adtLogo}
-                    alt="Experience Abu Dhabi"
-                    width="178"
-                    height="46"
-                    style={adtLogo}
-                  />
+              <Column style={adtLogoCell}>
+                <Img
+                  src={images.adtLogo}
+                  alt="Experience Abu Dhabi"
+                  width="178"
+                  height="46"
+                  style={adtLogo}
+                />
               </Column>
               <Column align="right" style={htLogoCell}>
                 <Link href={links.logo} style={htLogo}>
@@ -120,7 +120,11 @@ export const AbuDhabiEmail = () => {
                     </Row>
                     {heroFadeSteps.map((alpha) => (
                       <Row key={alpha}>
-                        <Column style={{ ...heroFadeStep, backgroundColor: `rgba(9, 48, 81, ${alpha})` }}>&nbsp;</Column>
+                        <Column
+                          style={{ ...heroFadeStep, backgroundColor: `rgba(9, 48, 81, ${alpha})` }}
+                        >
+                          &nbsp;
+                        </Column>
                       </Row>
                     ))}
                     <Row>
@@ -318,6 +322,22 @@ export const AbuDhabiEmail = () => {
             <Text style={copyrightText} className="ht-footer-text">
               HOLIDAY TRIBE PRIVATE LIMITED. All rights reserved © 2026
             </Text>
+            <Section style={unsubscribeSection}>
+              <Row>
+                <Column align="center" style={unsubscribeColumn}>
+                  <Text style={unsubscribeText} className="ht-footer-text">
+                    <Link
+                      href="we_wk_unsubscribe_link"
+                      target="_self"
+                      style={unsubscribeLink}
+                      className="ht-footer-text"
+                    >
+                      Unsubscribe
+                    </Link>
+                  </Text>
+                </Column>
+              </Row>
+            </Section>
           </Section>
         </Container>
       </Body>
@@ -765,4 +785,28 @@ const copyrightText = {
   fontSize: '15px',
   lineHeight: '20px',
   fontWeight: 400,
+};
+
+const unsubscribeSection = {
+  marginTop: '28px',
+};
+
+const unsubscribeColumn = {
+  width: '100%',
+  verticalAlign: 'top',
+};
+
+const unsubscribeText = {
+  margin: '0',
+  color: '#B8CDE0',
+  fontFamily: 'Inter, Helvetica, Arial, sans-serif',
+  fontSize: '15px',
+  lineHeight: '20px',
+  fontWeight: 400,
+  textAlign: 'center' as const,
+};
+
+const unsubscribeLink = {
+  color: '#B8CDE0',
+  textDecoration: 'underline',
 };
