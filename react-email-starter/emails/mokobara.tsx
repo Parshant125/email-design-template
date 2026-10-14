@@ -1,4 +1,16 @@
-import { Body, Container, Hr, Html, Img, Link, Preview, Section, Text } from 'react-email';
+import {
+  Body,
+  Column,
+  Container,
+  Hr,
+  Html,
+  Img,
+  Link,
+  Preview,
+  Row,
+  Section,
+  Text,
+} from 'react-email';
 
 const links = {
   logo: 'https://holidaytribe.ai/?utm_source=email&utm_medium=logo&utm_campaign=mokobara',
@@ -33,6 +45,7 @@ export const MokobaraEmail = () => {
       {/* Plain <head>: react-email's <Head> adds x-apple-disable-message-reformatting, which stops iPhone Mail from fitting the 600px layout to the screen. */}
       <head>
         <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=600" />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
@@ -46,7 +59,7 @@ export const MokobaraEmail = () => {
         Mokobara travel gear, free with your next booking!
       </Preview>
       <Body style={body} className="mk-page-bg">
-        <Container style={container} className="mk-black-bg">
+        <Container style={container} className="mk-black-bg" width="600">
           <Section style={heroSection} {...{ background: images.hero, bgcolor: skyBlue }}>
             <Text style={logoRow}>
               <Link href={links.logo} style={logoLink}>
@@ -68,17 +81,22 @@ export const MokobaraEmail = () => {
                 bag dekh ke
               </Text>
             </Link>
-            <Text style={wavesClip}>
-              <Img src={images.waves} alt="" width="600" height="240" style={wavesImage} />
-            </Text>
+            <Row>
+              <Column style={wavesCell} {...{ height: '220', background: images.waves }}>
+                &nbsp;
+              </Column>
+            </Row>
           </Section>
 
           <Section style={contentSection} className="mk-black-bg">
-            <Text style={headline} className="mk-white-text">
+            <Text style={headline} className="mk-white-text mk-headline">
               Get up to ₹10,000 worth of Mokobara
-              <br />
-              travel gear,{' '}
-              <span style={headlineAccent} className="mk-yellow-text">
+            </Text>
+            <Text style={headline} className="mk-white-text mk-headline">
+              <span style={headlineWhite} className="mk-white-text mk-headline">
+                {'travel gear, '}
+              </span>
+              <span style={headlineAccent} className="mk-yellow-text mk-headline">
                 free with your next booking!
               </span>
             </Text>
@@ -157,6 +175,11 @@ const themeStyles = `
   ${themeColors()}
   @media (prefers-color-scheme: dark) { ${themeColors()} }
   ${themeColors('[data-ogsb] ', '[data-ogsc] ')}
+  .mk-headline { font-size: 24px !important; line-height: 33px !important; -webkit-text-size-adjust: none !important; }
+  a[x-apple-data-detectors] {
+    color: inherit !important; text-decoration: none !important; font-size: inherit !important;
+    font-family: inherit !important; font-weight: inherit !important; line-height: inherit !important;
+  }
 `;
 
 const fontFamily = 'Inter, Helvetica, Arial, sans-serif';
@@ -165,12 +188,15 @@ const body = {
   backgroundColor: '#F5F5F5',
   margin: '0',
   padding: '24px 0',
+  minWidth: '600px',
   fontFamily,
-  WebkitTextSizeAdjust: '100%',
+  WebkitTextSizeAdjust: 'none',
 };
 
+// Fixed 600px (never narrower) so every iPhone scales the same layout instead of reflowing it.
 const container = {
   width: '600px',
+  minWidth: '600px',
   maxWidth: '600px',
   backgroundColor: black,
   margin: '0 auto',
@@ -240,20 +266,17 @@ const heroAccent = {
   color: yellowTitle,
 };
 
-// waves.png is 240px tall but its bottom 16px is transparent; clipping to 224px stops the photo showing through.
-const wavesClip = {
-  margin: '0',
-  height: '210px',
-  fontSize: '0',
-  overflow: 'hidden',
-  lineHeight: '0',
-};
-
-const wavesImage = {
+// waves.png is 600×240 but only rows 0–221 are fully opaque (222–223 are semi-transparent, the rest clear).
+// As a background it is cut off at the 220px cell edge in every client, so the photo can't show through.
+const wavesCell = {
   width: '600px',
-  height: '254px',
-  display: 'block',
-  border: '0',
+  height: '220px',
+  backgroundImage: `url(${images.waves})`,
+  backgroundSize: '600px 240px',
+  backgroundPosition: 'top left',
+  backgroundRepeat: 'no-repeat',
+  fontSize: '1px',
+  lineHeight: '1px',
 };
 
 const contentSection = {
@@ -272,8 +295,21 @@ const headline = {
   letterSpacing: '0',
 };
 
+// iPhone mail apps were shrinking and darkening the second line, so every piece carries its own full style.
+const headlineWhite = {
+  color: white,
+  fontFamily,
+  fontSize: '24px',
+  lineHeight: '33px',
+  fontWeight: 500,
+};
+
 const headlineAccent = {
   color: yellowText,
+  fontFamily,
+  fontSize: '24px',
+  lineHeight: '33px',
+  fontWeight: 500,
 };
 
 const ctaButton = {
@@ -292,6 +328,9 @@ const ctaButton = {
 
 const ctaText = {
   color: black,
+  fontFamily,
+  fontSize: '24px',
+  lineHeight: '28px',
   fontWeight: 600,
   textDecoration: 'none',
 };
