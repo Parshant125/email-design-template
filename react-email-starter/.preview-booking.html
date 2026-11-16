@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist+Mono:wght@500;700&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #e8e6e3; font-family: 'Space Grotesk', sans-serif; color: #1a1a1a; }
+  .mail { width: 640px; max-width: 100%; margin: 24px auto; background: #f7f6f4; border-radius: 16px; overflow: hidden; }
+  .pad { padding: 20px 24px; }
+  .hero { background: #221c1a; border-radius: 22px; padding: 22px 22px 0; color: #fff; }
+  .top { display: flex; justify-content: space-between; align-items: center; }
+  .pill { background: rgba(255,255,255,.12); border-radius: 999px; padding: 7px 12px; font-size: 12px; }
+  .logo { width: 36px; height: 36px; }
+  .hero-body { display: flex; align-items: center; gap: 12px; margin-top: 22px; }
+  .art { width: 42%; }
+  .art img { width: 100%; max-width: 180px; display: block; }
+  .copy { width: 58%; }
+  h1 { font-family: 'Geist Mono', monospace; font-size: 24px; line-height: 32px; margin: 0 0 10px; font-weight: 700; }
+  .muted { color: rgba(255,255,255,.68); font-size: 13px; line-height: 20px; margin: 0; }
+  .meta { display: flex; gap: 8px; border-top: 1px solid rgba(255,255,255,.12); margin-top: 22px; padding: 16px 0 18px; }
+  .meta div { flex: 1; }
+  .meta span { display: block; color: rgba(255,255,255,.68); font-size: 12px; margin-bottom: 4px; }
+  .meta b { font-weight: 600; font-size: 13px; }
+  .welcome { background: #f6f5f3; border-radius: 16px; padding: 18px; }
+  h2 { font-family: 'Geist Mono', monospace; margin: 0 0 14px; font-size: 18px; }
+  .welcome h2 { font-size: 16px; margin: 0 0 6px; }
+  .welcome p, .sub { margin: 0; color: #6b7280; font-size: 13px; line-height: 20px; }
+  .sec { padding: 22px 24px 8px; }
+  .card { background: #fff; border: 1px solid #e7e5e1; border-radius: 16px; padding: 16px 18px; margin-bottom: 14px; }
+  .split { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .right { text-align: right; color: #6b7280; font-size: 12px; line-height: 18px; }
+  .faint { color: #9ca3af; }
+  .hotel { display: flex; gap: 12px; margin-top: 14px; }
+  .hotel img { width: 64px; height: 64px; border-radius: 12px; object-fit: cover; }
+  .hotel b { display: block; font-size: 14px; }
+  .hotel p { margin: 0; color: #6b7280; font-size: 12px; line-height: 18px; }
+  .acts { border-top: 1px solid #eceae6; margin-top: 14px; padding-top: 12px; color: #6b7280; font-size: 12px; }
+  .times { display: flex; align-items: center; margin-top: 18px; }
+  .times .mid { flex: 1; text-align: center; color: #9ca3af; font-size: 11px; padding: 0 8px; }
+  .times .mid i { display: block; height: 1px; background: #d6d3d1; margin: 6px 0; }
+  .big { font-family: 'Geist Mono', monospace; font-size: 20px; font-weight: 700; margin: 0; }
+  .badge { display: inline-block; background: #f3f4f6; border-radius: 999px; padding: 6px 12px; font-size: 12px; color: #6b7280; margin-top: 16px; }
+  .checks { display: flex; background: #f6f5f3; border-radius: 16px; padding: 16px 18px; }
+  .checks div { flex: 1; }
+  .checks p { margin: 0 0 10px; font-size: 13px; }
+  .checks span { color: #16a34a; font-weight: 700; margin-right: 8px; }
+  .btn { display: block; text-align: center; text-decoration: none; border-radius: 12px; padding: 14px 16px; font-weight: 700; margin-top: 16px; }
+  .black { background: #111; color: #fff; }
+  .green { background: #2bd96a; color: #fff; }
+  .pay { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eceae6; padding: 14px 0; }
+  .pay b { font-size: 14px; }
+  .pay small { display: block; color: #9ca3af; font-size: 12px; font-weight: 400; }
+  .paid { display: inline-block; background: #e7f8ec; color: #16a34a; border-radius: 999px; padding: 3px 8px; font-size: 12px; font-weight: 600; margin-right: 8px; }
+  .lime { background: #c6f531; color: #111; }
+  .kv { display: flex; justify-content: space-between; align-items: center; gap: 16px; border-bottom: 1px solid #eceae6; padding: 14px 0; }
+  .kv:last-child { border-bottom: 0; }
+  .kv span { color: #6b7280; font-size: 14px; }
+  .kv b { font-size: 14px; font-weight: 600; }
+  .kv small { display: block; color: #9ca3af; font-size: 12px; font-weight: 400; }
+  .softcard { background: #f4f3f1; border-radius: 16px; padding: 18px; }
+  .advisor { display: flex; gap: 12px; align-items: center; }
+  .advisor img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+  .pills { display: flex; gap: 10px; margin-top: 14px; }
+  .pillbtn { display: inline-block; border: 1px solid #111; border-radius: 999px; padding: 10px 16px; color: #111; text-decoration: none; font-weight: 600; font-size: 14px; background: #fff; }
+  .wabtn { display: inline-block; background: #2bd96a; color: #fff; border-radius: 999px; padding: 10px 16px; text-decoration: none; font-weight: 600; font-size: 14px; }
+  .help { color: #4b5563; font-size: 15px; line-height: 24px; margin: 0 0 16px; }
+  .foot { text-align: center; padding: 28px 24px 36px; }
+  .trust { display: flex; justify-content: center; align-items: center; gap: 36px; }
+  .stars { color: #f5b400; letter-spacing: 1px; }
+  .socials { margin-top: 16px; }
+  .socials a { display: inline-block; margin: 0 12px; color: #111; text-decoration: none; font-size: 20px; font-weight: 700; }
+  .norefund { color: #ef4444; }
+  @media only screen and (max-width: 620px) {
+    .mail { width: 100%; margin: 0; border-radius: 0; }
+    .hero-body { display: block; }
+    .art, .copy { width: 100%; }
+    .art { text-align: center; }
+    .art img { max-width: 220px; margin: 0 auto; }
+    .copy { padding-top: 16px; }
+    .meta { display: block; }
+    .meta div { margin-bottom: 14px; }
+    .pills { display: block; }
+    .pillbtn, .wabtn { display: block; text-align: center; margin-bottom: 10px; }
+  }
+</style>
+</head>
+<body>
+  <div class="mail">
+    <div class="pad">
+      <div class="hero">
+        <div class="top">
+          <img class="logo" src="https://cdn.holidaytribe.ai/website/icons/holiday-tribe-icon.png" alt="Holiday Tribe" />
+          <span class="pill">Order ID: 64849</span>
+        </div>
+        <div class="hero-body">
+          <div class="art"><img src="https://cdn.holidaytribe.ai/email-template/images/booking-confirmed-hero.png" alt="Booking confirmed" /></div>
+          <div class="copy">
+            <h1>Aastha, your Japan holiday is confirmed !</h1>
+            <p class="muted">We've received your payment of ₹20,000. Your hotels, activities and prices are now locked in. This email is your official booking confirmation, so keep it handy.</p>
+          </div>
+        </div>
+        <div class="meta">
+          <div><span>Travel dates</span><b>26 Oct – 08 Nov 2026</b></div>
+          <div><span>Duration</span><b>13 nights, 3 cities</b></div>
+          <div><span>Travellers</span><b>4 adults, 2 children</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="pad" style="padding-top:4px">
+      <div class="welcome">
+        <h2>Welcome aboard, Triber!</h2>
+        <p>Our team will be in touch within the next few days to guide you through the next steps and answer any questions. In the meantime, you can review your booking below.</p>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Trip overview</h2>
+      <div class="card">
+        <div class="split">
+          <b style="font-family:'Geist Mono',monospace;font-size:16px">Delhi → Osaka</b>
+          <div class="right">Departure Flight<br><span class="faint">Economy class</span></div>
+        </div>
+        <div class="hotel">
+          <img src="https://cdn.holidaytribe.ai/website/icons/holiday-tribe-icon.png" style="width:28px;height:28px;border-radius:50%" alt="" />
+          <div><b style="font-size:13px">Air India</b><p class="faint">Flight number pending</p></div>
+        </div>
+        <div class="times">
+          <div><p class="big">20:50</p><p class="faint" style="margin:2px 0 0;font-size:12px">IGI Airport</p></div>
+          <div class="mid">48h 05m<i></i>2 layovers</div>
+          <div style="text-align:right"><p class="big">07:25 <span style="color:#ef4444;font-size:11px">+2 Days</span></p><p class="faint" style="margin:2px 0 0;font-size:12px">Osaka Airport</p></div>
+        </div>
+        <span class="badge">2 Adult · 2 Children</span>
+      </div>
+      <div class="card">
+        <div class="split"><b style="font-family:'Geist Mono',monospace">Osaka</b><div class="right" style="color:#1a1a1a;font-weight:600">Day 1-4<br><span class="faint" style="font-weight:400">26 Oct – 29 Oct</span></div></div>
+        <div class="hotel">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=200&h=200&fit=crop" alt="" />
+          <div>
+            <b>Holiday Inn Osaka Namba by IHG</b>
+            <p>2× Superior Twin Room</p>
+            <p>To Deluxe Room with Bathtub</p>
+            <p class="faint">Check-in: 3:00 PM – Check-out: 11:00 AM</p>
+          </div>
+        </div>
+        <div class="acts">4 Activities in Osaka</div>
+      </div>
+      <div class="card">
+        <div class="split"><b style="font-family:'Geist Mono',monospace">Kyoto</b><div class="right" style="color:#1a1a1a;font-weight:600">Day 4-7<br><span class="faint" style="font-weight:400">29 Oct – 01 Nov</span></div></div>
+        <div class="hotel">
+          <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=200&h=200&fit=crop" alt="" />
+          <div><b>Hotel Resol Trinity Kyoto</b><p>2× Twin Room</p><p class="faint">Check-in: 3:00 PM – Check-out: 11:00 AM</p></div>
+        </div>
+        <div class="acts">5 Activities in Kyoto</div>
+      </div>
+      <div class="card">
+        <div class="split"><b style="font-family:'Geist Mono',monospace">Tokyo</b><div class="right" style="color:#1a1a1a;font-weight:600">Day 7-14<br><span class="faint" style="font-weight:400">01 Nov – 08 Nov</span></div></div>
+        <div class="hotel">
+          <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=200&h=200&fit=crop" alt="" />
+          <div><b>The Royal Park Hotel Iconic Tokyo Shiodome</b><p>2× Superior Twin Room</p><p class="faint">Check-in: 2:00 PM – Check-out: 11:00 AM</p></div>
+        </div>
+        <div class="acts">8 Activities in Tokyo</div>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Included in your holiday</h2>
+      <div class="checks">
+        <div>
+          <p><span>✓</span>Visa Protect</p>
+          <p><span>✓</span>Travel insurance</p>
+          <p><span>✓</span>Airport transfers</p>
+        </div>
+        <div>
+          <p><span>✓</span>Daily breakfast</p>
+          <p><span>✓</span>24/7 on-trip support</p>
+          <p><span>✓</span>6 activities</p>
+        </div>
+      </div>
+      <a class="btn black" href="https://holidaytribe.ai">View booking</a>
+    </div>
+    <div class="sec">
+      <h2>Payment schedule</h2>
+      <p class="sub">You've paid 1 of 3 instalments. Here's what's left.</p>
+      <div class="pay"><div><b>1st instalment</b><small>Paid on 28 Aug 2026</small></div><b><span class="paid">✓ Paid</span>₹59,896</b></div>
+      <div class="pay"><div><b>2nd instalment</b><small>Due 08 Oct 2026</small></div><b>₹59,896</b></div>
+      <div class="pay"><div><b>3rd instalment</b><small>Due 16 Oct 2026</small></div><b>₹59,897</b></div>
+      <div class="pay" style="border:0"><b style="font-family:'Geist Mono',monospace">Trip total</b><b style="font-family:'Geist Mono',monospace">₹1,39,793</b></div>
+      <a class="btn lime" href="https://holidaytribe.ai">Pay 2nd instalment of ₹59,896</a>
+    </div>
+    <div class="sec">
+      <h2>Payment receipt</h2>
+      <div class="kv"><span>Amount paid</span><b>₹20,000</b></div>
+      <div class="kv"><span>Paid on</span><b>28 Aug 2026</b></div>
+      <div class="kv"><span>Payment method</span><b>PayU</b></div>
+      <div class="kv"><span>Transaction ID</span><b>BHYDU14364849</b></div>
+    </div>
+    <div class="sec">
+      <h2>Refund policy</h2>
+      <p class="sub">If your plans change, the refund depends on when you cancel.</p>
+      <div class="kv"><div><b style="color:#1a1a1a">45 days before departure</b><small>On or before 11 Sep 2026</small></div><b>₹50,000</b></div>
+      <div class="kv"><div><b style="color:#1a1a1a">30 days before departure</b><small>12 Sep – 26 Sep 2026</small></div><b>₹35,000</b></div>
+      <div class="kv"><div><b style="color:#1a1a1a">15 days before departure</b><small>27 Sep – 11 Oct 2026</small></div><b>₹20,000</b></div>
+      <div class="kv"><div><b style="color:#1a1a1a">Less than 15 days before departure</b><small>From 12 Oct 2026</small></div><b class="norefund">No refund</b></div>
+    </div>
+    <div class="sec">
+      <div class="softcard">
+        <div class="advisor">
+          <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=160&h=160&fit=crop" alt="Anjali Verma" />
+          <div>
+            <b style="font-family:'Geist Mono',monospace;font-size:16px">Anjali Verma, your Holiday Advisor</b>
+            <p class="sub" style="margin-top:4px">Reach out for anything, from itinerary changes to visa questions.</p>
+          </div>
+        </div>
+        <div class="pills">
+          <a class="pillbtn" href="tel:+919319998495">☎ Call Holiday Advisor</a>
+          <a class="wabtn" href="https://wa.me/919319998495">Chat on Whatsapp</a>
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="softcard">
+        <p class="help">If you have any concerns and need assistance, we would want to hear it first-hand. Write directly to us and we will make sure that it gets resolved at the earliest.</p>
+        <a class="pillbtn" href="https://holidaytribe.ai">✉ Connect with us</a>
+      </div>
+    </div>
+    <div class="foot">
+      <div class="trust">
+        <div>
+          <b><span style="color:#4285f4">G</span> 4.8 <span class="stars">★★★★★</span></b>
+          <div class="faint" style="font-size:11px">1,271 reviews on Google</div>
+        </div>
+        <b style="font-family:'Geist Mono',monospace;font-size:16px">Visa Protect</b>
+      </div>
+      <div style="border-top:1px solid #eceae6;margin-top:18px;padding-top:18px">
+        <div style="color:#4b5563;font-size:13px">Holiday Tribe Private Limited. All rights reserved © 2026</div>
+        <div class="socials">
+          <a href="https://www.facebook.com/holidaytribe">f</a>
+          <a href="https://www.instagram.com/holidaytribeworld/">◎</a>
+          <a href="https://www.linkedin.com/company/holidaytribe/">in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
