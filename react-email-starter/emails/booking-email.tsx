@@ -49,6 +49,8 @@ const WHATSAPP_ICON_URL =
   );
 const HERO_ILLUSTRATION_URL =
   'https://cdn.holidaytribe.ai/email-template/icons/booking_confirmation_illustration.svg';
+const VISA_PROTECT_URL =
+  'https://cdn.holidaytribe.ai/email-template/icons/visa_protect.svg';
 const AIRLINE_LOGO_URL = 'https://cdn.holidaytribe.ai/website/icons/holiday-tribe-icon.png';
 const HOTEL_IMAGE_OSAKA =
   'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=200&h=200&fit=crop';
@@ -73,13 +75,21 @@ const CALL_HREF = 'tel:+919319998495';
 const WHATSAPP_HREF = 'https://wa.me/919319998495';
 const CONTACT_HREF = 'https://holidaytribe.ai';
 const SOCIALS = [
-  { name: 'Facebook', href: 'https://www.facebook.com/holidaytribe', mark: 'f' },
+  {
+    name: 'Facebook',
+    href: 'https://www.facebook.com/holidaytribe',
+    src: 'https://cdn.holidaytribe.ai/email-template/icons/facebook.svg',
+  },
   {
     name: 'Instagram',
-    href: 'https://www.instagram.com/holidaytribeworld/',
-    mark: '◎',
+    href: 'https://www.instagram.com/holidaytribeworld',
+    src: 'https://cdn.holidaytribe.ai/email-template/icons/instagram-icon-gray.svg',
   },
-  { name: 'LinkedIn', href: 'https://www.linkedin.com/company/holidaytribe/', mark: 'in' },
+  {
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/holidaytribe',
+    src: 'https://cdn.holidaytribe.ai/email-template/icons/linkedIn-icon-gray.svg',
+  },
 ];
 const pagePad = '20px 24px';
 
@@ -1303,8 +1313,8 @@ export const BookingConfirmationEmail = () => {
                               colSpan={2}
                               style={{
                                 fontFamily: headingFontFamily,
-                                fontSize: '11px',
-                                lineHeight: '14px',
+                                fontSize: '8px',
+                                lineHeight: '8px',
                                 color: muted,
                                 paddingTop: '2px',
                                 whiteSpace: 'nowrap',
@@ -1330,7 +1340,7 @@ export const BookingConfirmationEmail = () => {
             >
               
               <Img
-                src="https://cdn.holidaytribe.ai/website/icons/visa-protection-icon.svg"
+                src={VISA_PROTECT_URL}
                 width="40"
                 height="40"
                 alt="Visa Protection"
@@ -1353,7 +1363,7 @@ export const BookingConfirmationEmail = () => {
             >
               Holiday Tribe Private Limited. All rights reserved © 2026
             </Text>
-            <Text style={{ margin: '14px 0 0 0', textAlign: 'center' }}>
+            <Text style={{ margin: '14px 0 0 0', textAlign: 'center', lineHeight: 0 }}>
               {SOCIALS.map((social) => (
                 <a
                   key={social.name}
@@ -1361,15 +1371,18 @@ export const BookingConfirmationEmail = () => {
                   style={{
                     display: 'inline-block',
                     margin: '0 12px',
-                    fontFamily: bodyFontFamily,
-                    fontSize: '18px',
-                    fontWeight: 700,
-                    lineHeight: '24px',
-                    color: ink,
+                    lineHeight: 0,
                     textDecoration: 'none',
+                    verticalAlign: 'middle',
                   }}
                 >
-                  {social.mark}
+                  <Img
+                    src={social.src}
+                    alt={social.name}
+                    width="24"
+                    height="24"
+                    style={{ display: 'block', width: '24px', height: '24px' }}
+                  />
                 </a>
               ))}
             </Text>
