@@ -16,6 +16,17 @@ const bodyFontFamily =
   "'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";
 
 const LOGO_URL = 'https://cdn.holidaytribe.ai/website/icons/holiday-tribe-icon.png';
+const GOOGLE_LOGO_URL = 'https://cdn.holidaytribe.ai/website/icons/google-logo.svg';
+const STAR_FULL_URL =
+  'data:image/svg+xml;utf8,' +
+  encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path fill="#F5B400" d="M12 2.5l2.9 5.88 6.49.94-4.7 4.58 1.11 6.47L12 17.77l-5.8 3.05 1.11-6.47-4.7-4.58 6.49-.94L12 2.5z"/></svg>'
+  );
+const STAR_HALF_URL =
+  'data:image/svg+xml;utf8,' +
+  encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path fill="#E5E5E5" d="M12 2.5l2.9 5.88 6.49.94-4.7 4.58 1.11 6.47L12 17.77l-5.8 3.05 1.11-6.47-4.7-4.58 6.49-.94L12 2.5z"/><path fill="#F5B400" d="M12 2.5v15.27l-5.8 3.05 1.11-6.47-4.7-4.58 6.49-.94L12 2.5z"/></svg>'
+  );
 const BULB_ICON_URL =
   'data:image/svg+xml;utf8,' +
   encodeURIComponent(
@@ -37,7 +48,7 @@ const WHATSAPP_ICON_URL =
     '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#111111"><path d="M12.04 2C6.58 2 2.15 6.4 2.15 11.83c0 1.74.46 3.44 1.34 4.94L2 22l5.39-1.41a10.1 10.1 0 0 0 4.65 1.12h.01c5.46 0 9.89-4.4 9.89-9.83C21.94 6.4 17.5 2 12.04 2zm5.76 13.9c-.24.68-1.4 1.24-1.94 1.32-.5.07-1.12.1-1.81-.11-.41-.13-.94-.31-1.62-.6-2.85-1.23-4.7-4.1-4.84-4.29-.14-.19-1.16-1.54-1.16-2.94 0-1.4.73-2.09 1-2.37.24-.26.64-.38.85-.38.21 0 .42 0 .6.01.19.01.45-.07.7.53.26.64.89 2.2.97 2.36.08.16.13.35.03.56-.1.21-.16.34-.31.52-.16.18-.33.4-.47.54-.16.16-.32.33-.14.64.19.31.83 1.37 1.78 2.22 1.22 1.09 2.25 1.43 2.57 1.59.32.16.5.13.69-.08.19-.21.8-.93 1.01-1.25.21-.32.43-.26.72-.16.29.1 1.84.87 2.16 1.03.32.16.53.24.61.37.08.13.08.77-.16 1.45z"/></svg>'
   );
 const HERO_ILLUSTRATION_URL =
-  'https://cdn.holidaytribe.ai/email-template/images/booking-confirmed-hero.png';
+  'https://cdn.holidaytribe.ai/email-template/icons/booking_confirmation_illustration.svg';
 const AIRLINE_LOGO_URL = 'https://cdn.holidaytribe.ai/website/icons/holiday-tribe-icon.png';
 const HOTEL_IMAGE_OSAKA =
   'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=200&h=200&fit=crop';
@@ -56,7 +67,6 @@ const cardBorder = '#E7E5E1';
 const soft = '#F6F5F3';
 const green = '#16A34A';
 const payGreen = '#80FF00';
-const whatsappGreen = '#00FF9D';
 const ADVISOR_PHOTO =
   'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=160&h=160&fit=crop';
 const CALL_HREF = 'tel:+919319998495';
@@ -370,7 +380,7 @@ export const BookingConfirmationEmail = () => {
                     style={{
                       display: 'block',
                       width: '100%',
-                      maxWidth: '180px',
+                      maxWidth: '218px',
                       height: 'auto',
                     }}
                   />
@@ -381,29 +391,37 @@ export const BookingConfirmationEmail = () => {
                 >
                   <Text
                     style={{
-                      margin: '0 0 10px 0',
-                      fontFamily: headingFontFamily,
-                      fontSize: '24px',
-                      fontWeight: 700,
-                      lineHeight: '32px',
-                      color: '#ffffff',
-                      textAlign: 'left',
+                        width: '100%',
+                        margin: '0 0 10px 0',
+                        fontFamily: 'Instrument Sans',
+                        fontSize: '34px',
+                        fontWeight: 700,
+                        fontStyle: 'normal',
+                        lineHeight: '120%',
+                        letterSpacing: '-0.5px',
+                        color: '#ffffff',
+                        textAlign: 'left',
                     }}
                   >
-                    Aastha, your Japan holiday is confirmed !
+                    Aastha, your Japan
+                    <br />
+                    holiday is
+                    <br />
+                    confirmed !
                   </Text>
                   <Text
-                    style={{
-                      margin: '0',
-                      fontFamily: bodyFontFamily,
-                      fontSize: '13px',
-                      lineHeight: '20px',
-                      color: mutedOnDark,
-                      textAlign: 'left',
-                    }}
+                style={{
+                  width: '100%',
+                  fontFamily: 'Instrument Sans',
+                  fontSize: '16px',
+                  fontWeight: 400,
+                  fontStyle: 'regular',
+                  lineHeight: '24px',
+                  color: '#D9D3D1',
+                }}
                   >
-                    We&apos;ve received your payment of ₹20,000. Your hotels, activities and prices
-                    are now locked in. This email is your official booking confirmation, so keep it
+                    We&apos;ve received your payment of <br />₹20,000. Your hotels, activities and <br /> prices
+                    are now locked in. This email is <br />  your official booking confirmation, so <br />  keep it
                     handy.
                   </Text>
                 </Column>
@@ -1219,32 +1237,88 @@ export const BookingConfirmationEmail = () => {
                 paddingRight: '16px',
               }}
             >
-              <Text
-                style={{
-                  margin: '0',
-                  fontFamily: bodyFontFamily,
-                  fontSize: '14px',
-                  fontWeight: 700,
-                  lineHeight: '18px',
-                  color: ink,
-                  textAlign: 'right',
-                }}
+              <table
+                role="presentation"
+                cellPadding="0"
+                cellSpacing="0"
+                align="right"
+                style={{ borderCollapse: 'collapse', marginLeft: 'auto' }}
               >
-                <span style={{ color: '#4285F4' }}>G</span> 4.8{' '}
-                <span style={{ color: '#F5B400' }}>★★★★★</span>
-              </Text>
-              <Text
-                style={{
-                  margin: '2px 0 0 0',
-                  fontFamily: bodyFontFamily,
-                  fontSize: '11px',
-                  lineHeight: '14px',
-                  color: faint,
-                  textAlign: 'right',
-                }}
-              >
-                1,271 reviews on Google
-              </Text>
+                <tbody>
+                  <tr>
+                    <td style={{ verticalAlign: 'middle', paddingRight: '10px', lineHeight: 0 }}>
+                      <Img
+                        src={GOOGLE_LOGO_URL}
+                        alt="Google"
+                        width="28"
+                        height="28"
+                        style={{ display: 'block', width: '28px', height: '28px' }}
+                      />
+                    </td>
+                    <td style={{ verticalAlign: 'middle', textAlign: 'left' }}>
+                      <table
+                        role="presentation"
+                        cellPadding="0"
+                        cellSpacing="0"
+                        style={{ borderCollapse: 'collapse' }}
+                      >
+                        <tbody>
+                          <tr>
+                            <td
+                              style={{
+                                verticalAlign: 'middle',
+                                fontFamily: bodyFontFamily,
+                                fontSize: '18px',
+                                fontWeight: 700,
+                                lineHeight: '22px',
+                                color: ink,
+                                paddingRight: '6px',
+                              }}
+                            >
+                              4.8
+                            </td>
+                            <td style={{ verticalAlign: 'middle', lineHeight: 0 }}>
+                              {[STAR_FULL_URL, STAR_FULL_URL, STAR_FULL_URL, STAR_FULL_URL, STAR_HALF_URL].map(
+                                (src, i) => (
+                                  <Img
+                                    key={`star-${i}`}
+                                    src={src}
+                                    alt=""
+                                    width="14"
+                                    height="14"
+                                    style={{
+                                      display: 'inline-block',
+                                      width: '14px',
+                                      height: '14px',
+                                      verticalAlign: 'middle',
+                                      marginLeft: i === 0 ? '0' : '1px',
+                                    }}
+                                  />
+                                )
+                              )}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td
+                              colSpan={2}
+                              style={{
+                                fontFamily: headingFontFamily,
+                                fontSize: '11px',
+                                lineHeight: '14px',
+                                color: muted,
+                                paddingTop: '2px',
+                                whiteSpace: 'nowrap',
+                              }}
+                            >
+                              1,271 reviews on Google
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </Column>
             <Column
               style={{
@@ -1254,19 +1328,14 @@ export const BookingConfirmationEmail = () => {
                 paddingLeft: '16px',
               }}
             >
-              <Text
-                style={{
-                  margin: '0',
-                  fontFamily: headingFontFamily,
-                  fontSize: '16px',
-                  fontWeight: 700,
-                  lineHeight: '20px',
-                  color: ink,
-                  textAlign: 'left',
-                }}
-              >
-                Visa Protect
-              </Text>
+              
+              <Img
+                src="https://cdn.holidaytribe.ai/website/icons/visa-protection-icon.svg"
+                width="40"
+                height="40"
+                alt="Visa Protection"
+                style={{width: 'auto', height: 'auto', color: '#000000' }}
+              />              
             </Column>
           </Row>
           <Section
