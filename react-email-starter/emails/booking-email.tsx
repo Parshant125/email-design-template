@@ -71,9 +71,13 @@ const green = '#16A34A';
 const payGreen = '#80FF00';
 const ADVISOR_PHOTO =
   'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=160&h=160&fit=crop';
-const CALL_HREF = 'tel:+919319998495';
+const CALL_HREF = 'tel:+919821332300';
 const WHATSAPP_HREF = 'https://wa.me/919319998495';
-const CONTACT_HREF = 'https://holidaytribe.ai';
+const CONTACT_HREF = 'mailto:contact@holidaytribe.com';
+const QUOTATION_ID = '699e1afbd08345b906a5fe55';
+const TRIP_HREF = `https://holidaytribe.ai/trip/${QUOTATION_ID}`;
+const USER_ITINERARY_ID = '6afea64970d866b47f9ee6dd';
+const BOOKING_HREF = `https://holidaytribe.ai/user-itinerary/${USER_ITINERARY_ID}/edit`;
 const SOCIALS = [
   {
     name: 'Facebook',
@@ -87,7 +91,7 @@ const SOCIALS = [
   },
   {
     name: 'LinkedIn',
-    href: 'https://www.linkedin.com/company/holidaytribe',
+    href: 'https://www.linkedin.com/company/holidaytribe/posts/',
     src: 'https://cdn.holidaytribe.ai/email-template/icons/linkedIn-icon-gray.svg',
   },
 ];
@@ -908,7 +912,8 @@ export const BookingConfirmationEmail = () => {
 
             <Section style={{ marginTop: '16px' }}>
               <a
-                href="https://holidaytribe.ai"
+                href={BOOKING_HREF}
+                target="_blank"
                 style={{
                   display: 'block',
                   backgroundColor: '#111111',
@@ -986,7 +991,7 @@ export const BookingConfirmationEmail = () => {
             </Row>
 
             <Section style={{ marginTop: '16px' }}>
-              <a href="https://holidaytribe.ai" style={payButton}>
+              <a href={TRIP_HREF} style={payButton} target="_blank">
                 Pay 2nd instalment of ₹59,896
               </a>
             </Section>
@@ -1117,7 +1122,7 @@ export const BookingConfirmationEmail = () => {
                       className="bk-advisor-btn"
                       style={{ verticalAlign: 'middle', paddingRight: '12px' }}
                     >
-                      <a href={CALL_HREF} style={{ ...advisorCallButton }}>
+                      <a href={CALL_HREF} style={{ ...advisorCallButton }} target="_blank">
                         <table
                           role="presentation"
                           cellPadding={0}
@@ -1150,7 +1155,7 @@ export const BookingConfirmationEmail = () => {
                       </a>
                     </td>
                     <td className="bk-advisor-btn" style={{ verticalAlign: 'middle' }}>
-                      <a href={WHATSAPP_HREF} style={{ ...advisorWhatsappButton }}>
+                      <a href={WHATSAPP_HREF} style={{ ...advisorWhatsappButton }} target="_blank">
                         <table
                           role="presentation"
                           cellPadding={0}
@@ -1206,6 +1211,7 @@ export const BookingConfirmationEmail = () => {
               <a
                 href={CONTACT_HREF}
                 style={{ ...advisorCallButton, display: 'inline-block', width: 'auto' }}
+                target="_blank"
               >
                 <table
                   role="presentation"
@@ -1215,7 +1221,7 @@ export const BookingConfirmationEmail = () => {
                 >
                   <tbody>
                     <tr>
-                      <td style={{ verticalAlign: 'middle', paddingRight: '8px', lineHeight: 0 }}>
+                      <td style={{ verticalAlign: 'middle', paddingRight: '8px', lineHeight: 0  }}>
                         <Img
                           src={MAIL_ICON_URL}
                           alt=""
@@ -1367,7 +1373,7 @@ export const BookingConfirmationEmail = () => {
               {SOCIALS.map((social) => (
                 <a
                   key={social.name}
-                  href={social.href}
+                  href={social.href} target="_blank"
                   style={{
                     display: 'inline-block',
                     margin: '0 12px',
