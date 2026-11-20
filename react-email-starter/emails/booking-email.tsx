@@ -358,12 +358,18 @@ export const BookingConfirmationEmail = () => {
             >
               <Row>
                 <Column style={{ verticalAlign: 'middle', width: '50%' }}>
-                  <Img
-                    src={LOGO_URL}
-                    width="36"
-                    alt="Holiday Tribe"
-                    style={{ display: 'block', width: '36px', height: 'auto' }}
-                  />
+                  <a
+                    href="https://holidaytribe.ai/"
+                    target="_blank"
+                    style={{ textDecoration: 'none', display: 'inline-block' }}
+                  >
+                    <Img
+                      src={LOGO_URL}
+                      width="36"
+                      alt="Holiday Tribe"
+                      style={{ display: 'block', width: '36px', height: 'auto', border: 0 }}
+                    />
+                  </a>
                 </Column>
                 <Column style={{ verticalAlign: 'middle', width: '50%', textAlign: 'right' }}>
                   <span
